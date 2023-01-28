@@ -6,12 +6,11 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
       ./hardware.nix
       inputs.home-manager.nixosModules.home-manager
     ];
 
-  # Define a user account.
   users.users.iguoliveira = {
     isNormalUser = true;
     description = "Igor Oliveira Rodrigues";
@@ -27,7 +26,6 @@
     extraSpecialArgs = { inherit inputs outputs; };
   };
 
-  # Bootloader.
   boot.loader = {
     systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;
@@ -38,6 +36,7 @@
   nix.settings = {  
     experimental-features = [ "nix-command" "flakes" ];
     auto-optimise-store = true;
+    warn-dirty = false;
   };
 
   networking = {
@@ -46,14 +45,11 @@
   };
 
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  # Set your time zone.
   time.timeZone = "America/Sao_Paulo";
 
-  # Select internationalisation properties.
   i18n = {
     defaultLocale = "en_US.UTF-8";
     extraLocaleSettings = {
@@ -71,11 +67,10 @@
 
 
   services = {
-    xserver = {
-      enable = true; # Enable the X11 windowing system
+    xserver = { # X11
+      enable = true;
       displayManager.sddm.enable = true;
       desktopManager.plasma5.enable = true;
-      # Configure keymap in X11
       layout = "br";
       xkbVariant = "nodeadkeys";
     };
@@ -85,15 +80,13 @@
       alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;
-      #jack.enable = true;
-
-      # use the example session manager (no others are packaged yet so this is enabled by default,
-      # no need to redefine it in your config for now)
-      #media-session.enable = true;
+      # jack.enable = true;
+      # media-session.enable = true;
     };
+
+    openssh.enable = true; # Enable the OpenSSH daemon
   };
 
-  # Configure console keymap
   console.keyMap = "br-abnt2";
 
   # Enable CUPS to print documents.
@@ -106,15 +99,14 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config = {
+    allowUnfree = true;
+    permittedInsecurePackages = [ "electron-13.6.9" ];
+  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-  #  vim
-  #  wget
-  ];
+  # environment.systemPackages = with pkgs; [ wget ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -123,11 +115,6 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
@@ -142,5 +129,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "22.11"; # Did you read the comment?
-
 }
