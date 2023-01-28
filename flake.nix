@@ -23,6 +23,13 @@
         specialArgs = { inherit inputs outputs; };
       };
     };
+    {
+      monarch = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [ ./hosts/monarch ];
+        specialArgs = { inherit inputs outputs };
+      };
+    };
     # packages.x86_64-linux.pacotefoda = nixpkgs.legacyPackages.x86_64-linux.hello;
   };
 }
