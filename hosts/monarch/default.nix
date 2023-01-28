@@ -13,7 +13,7 @@
 
   users.users.iguoliveira = {
     isNormalUser = true;
-    description = "Igor Oliveira Rodrigues";
+    description = "Igor Oliveira";
     extraGroups = [ "networkmanager" "wheel" ];
   };
 
@@ -70,8 +70,8 @@
       enable = true;
       displayManager.sddm.enable = true;
       desktopManager.plasma5.enable = true;
-      layout = "br";
-      xkbVariant = "nodeadkeys";
+      layout = "us";
+      xkbVariant = "altgr-intl";
     };
 
     pipewire = {
