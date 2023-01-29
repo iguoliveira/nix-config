@@ -4,11 +4,15 @@
 
 { config, pkgs, inputs, outputs, ... }:
 
-{    
+{
   nix.settings = {  
     experimental-features = [ "nix-command" "flakes" ];
     auto-optimise-store = true;
     warn-dirty = false;
+  };
+
+  environment.shellAliases = {
+    bld = "sudo nixos-rebuild switch --flake";
   };
 
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
