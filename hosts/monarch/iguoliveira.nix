@@ -1,4 +1,7 @@
-{ lib, config, pkgs, ... }: {
+{ lib, config, pkgs, inputs, outputs, ... }: {
+
+    imports = [ inputs.misterio77.homeManagerModules.fonts ];
+
     home = {
         stateVersion = "23.05"; # DO NOT TOUCH
         username = "iguoliveira";
@@ -18,5 +21,18 @@
             qbittorrent
         ];
     };
+
+    fontProfiles = {
+        enable = true;
+        monospace = {
+            family = "FiraCode Nerd Font";
+            package = pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; };
+        };
+        regular = {
+            family = "Fira Sans";
+            package = pkgs.fira;
+        };
+    };
+
     programs.starship.enable = true;
 }
