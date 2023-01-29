@@ -39,6 +39,7 @@ in {
             discord
             obinskit
             qbittorrent
+            openssl
         ];
     };
 

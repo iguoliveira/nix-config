@@ -36,6 +36,7 @@ in {
             vscode
             nodePackages_latest.pnpm
             neofetch
+            openssl
         ];
     };
 
