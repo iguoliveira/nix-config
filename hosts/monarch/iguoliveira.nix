@@ -1,6 +1,27 @@
-{ lib, config, pkgs, inputs, outputs, ... }: {
+{ lib, config, pkgs, inputs, outputs, ... }:
+let
+    colorScheme = inputs.nix-colors.colorSchemes.dracula.colors;
+in {
+    imports = [
+        inputs.misterio77.homeManagerModules.fonts
+        inputs.abehidek.userModules.desktop
+        inputs.nix-colors.homeManagerModule
+    ];
 
-    imports = [ inputs.misterio77.homeManagerModules.fonts ];
+    modules.user.desktop = {
+        term.kitty = {
+            enable = true;
+            font = {
+                enable = true;
+                family = "FiraCode Nerd Font";
+                package = pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; };
+            };
+            colors = {
+                enable = true;
+                base16 = colorScheme;
+            };
+        };
+    };
 
     home = {
         stateVersion = "23.05"; # DO NOT TOUCH
@@ -12,7 +33,6 @@
             brave
             nodejs
             git
-            starship
             vscode
             nodePackages_latest.pnpm
             neofetch

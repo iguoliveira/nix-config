@@ -9,6 +9,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     abehidek.url = "github:abehidek/nix-config";
     misterio77.url = "github:misterio77/nix-config";
+    nix-colors.url = "github:misterio77/nix-colors";
   };
 
   outputs = {
