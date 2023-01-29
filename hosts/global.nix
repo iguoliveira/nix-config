@@ -5,6 +5,15 @@
 { config, pkgs, inputs, outputs, ... }:
 
 {
+  imports = [ inputs.abehidek.nixosModules.services ];
+
+  modules.system.services = {
+    docker = {
+      enable = true;
+      users = [ "iguoliveira" ];
+    };
+  };
+
   nix.settings = {  
     experimental-features = [ "nix-command" "flakes" ];
     auto-optimise-store = true;
