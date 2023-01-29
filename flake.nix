@@ -7,12 +7,14 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    abehidek.url = "github:abehidek/nix-config";
   };
 
   outputs = {
     self,
     nixpkgs,
     home-manager,
+    abehidek,
     ... 
   } @ inputs : 
   let

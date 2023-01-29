@@ -18,4 +18,5 @@
             qbittorrent
         ];
     };
+    programs.starship.enable = true;
 }
