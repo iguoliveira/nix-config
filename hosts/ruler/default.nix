@@ -14,7 +14,11 @@
   modules.system.shell = {
     zsh = {
       enable = true;
-      rice = true; # Archive file
+      rice = true;
+      users = [ "iguoliveira" ];
+    };
+    direnv = {
+      enable = true;
       users = [ "iguoliveira" ];
     };
   };
