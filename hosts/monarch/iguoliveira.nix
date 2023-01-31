@@ -37,6 +37,7 @@ in {
             obinskit
             qbittorrent
             openssl
+            bitwarden
         ];
     };
 
