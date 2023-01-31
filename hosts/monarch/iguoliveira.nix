@@ -29,12 +29,9 @@ in {
         homeDirectory = "/home/iguoliveira";
         packages = with pkgs; [
             postman
-            helix
             brave
-            nodejs
             git
             vscode
-            nodePackages_latest.pnpm
             neofetch
             discord
             obinskit
