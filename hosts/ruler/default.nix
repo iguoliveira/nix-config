@@ -26,7 +26,7 @@
   users.users.iguoliveira = {
     isNormalUser = true;
     description = "Igor Oliveira";
-    extraGroups = [ "networkmanager" "wheel" "adbusers"];
+    extraGroups = [ "networkmanager" "wheel" "adbusers" ];
   };
 
   programs.adb.enable = true;
