@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, outputs, ... }:
+{ config, pkgs, inputs, outputs, lib, ... }:
 
 {
   imports =
@@ -29,7 +29,15 @@
     extraGroups = [ "networkmanager" "wheel" "adbusers" ];
   };
 
-  programs.adb.enable = true;
+  programs = {
+    adb.enable = true;
+    steam = {
+      enable = true;
+      remotePlay.openFirewall = true;
+      dedicatedServer.openFirewall = true;
+    };
+  };
+
 
   home-manager = {
     useGlobalPkgs = true;
@@ -58,7 +66,15 @@
 
   console.keyMap = "br-abnt2";
 
-  nixpkgs.config.permittedInsecurePackages = [ "electron-13.6.9" ];
+  nixpkgs.config = {
+    permittedInsecurePackages = [ "electron-13.6.9" ];
+    allowNonFree = true;
+    allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+      "steam"
+      "steam-original"
+      "steam-runtime"
+    ];
+  };
 
   system.stateVersion = "22.11"; # Careful
 }
