@@ -31,11 +31,6 @@
 
   programs = {
     adb.enable = true;
-    steam = {
-      enable = true;
-      remotePlay.openFirewall = true;
-      dedicatedServer.openFirewall = true;
-    };
   };
 
 
@@ -69,11 +64,6 @@
   nixpkgs.config = {
     permittedInsecurePackages = [ "electron-13.6.9" ];
     allowNonFree = true;
-    allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-      "steam"
-      "steam-original"
-      "steam-runtime"
-    ];
   };
 
   system.stateVersion = "22.11"; # Careful
