@@ -25,16 +25,10 @@
     libPath = nixpkgs.lib;
   in {
     nixosConfigurations = {
-      # Home desktop env
+      # Portable SSD
       monarch = libPath.nixosSystem {
         system = sysArch;
         modules = [ ./hosts/monarch ];
-        specialArgs = { inherit inputs outputs; };
-      };
-      # Pendrive env
-      ruler = libPath.nixosSystem {
-        system = sysArch;
-        modules = [ ./hosts/ruler ];
         specialArgs = { inherit inputs outputs; };
       };
     };

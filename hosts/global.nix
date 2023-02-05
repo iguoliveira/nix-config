@@ -58,6 +58,4 @@
   security.rtkit.enable = true;
 
   nixpkgs.config.allowUnfree = true;
-
-  # environment.systemPackages = with pkgs; [ wget ];
 }
