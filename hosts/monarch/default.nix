@@ -33,7 +33,6 @@
     adb.enable = true;
   };
 
-
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
@@ -44,9 +43,17 @@
   };
 
   boot.loader = {
-    systemd-boot.enable = true;
-    efi.canTouchEfiVariables = true;
-    efi.efiSysMountPoint = "/boot/efi";
+    efi = {
+     canTouchEfiVariables = true;
+     efiSysMountPoint = "/boot/efi";
+    };
+    grub = {
+     devices = [ "nodev" ];
+     efiSupport = true;
+     enable = true;
+     useOSProber = true;
+     version = 2;
+    };
   };
 
   networking = {
