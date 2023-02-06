@@ -25,7 +25,7 @@
     libPath = nixpkgs.lib;
   in {
     nixosConfigurations = {
-      # Portable SSD
+      # Home Desktop
       monarch = libPath.nixosSystem {
         system = sysArch;
         modules = [ ./hosts/monarch ];
