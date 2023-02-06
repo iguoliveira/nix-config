@@ -29,7 +29,7 @@ in {
         homeDirectory = "/home/iguoliveira";
         packages = with pkgs; [
             postman
-            brave
+            vivaldi
             git
             vscode
             neofetch
