@@ -9,17 +9,23 @@
     inputs.abehidek.nixosModules.shell
   ];
 
-  modules.system.services.docker.users = [ "iguoliveira" ];
-
-  modules.system.shell = {
-    zsh = {
-      enable = true;
-      rice = true;
-      users = [ "iguoliveira" ];
+  modules.system = {
+    shell = {
+      zsh = {
+        enable = true;
+        rice = true;
+        users = [ "iguoliveira" ];
+      };
+      direnv = {
+        enable = true;
+        users = [ "iguoliveira" ];
+      };
     };
-    direnv = {
-      enable = true;
-      users = [ "iguoliveira" ];
+
+    services = {
+      docker = {
+        users = [ "iguoliveira" ];
+      };
     };
   };
 
