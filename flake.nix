@@ -31,6 +31,12 @@
         modules = [ ./hosts/monarch ];
         specialArgs = { inherit inputs outputs; };
       };
+      # Mobile Environment
+      titan = libPath.nixosSystem {
+        system = sysArch;
+        modules = [ ./hosts/titan ];
+        specialArgs = { inherit inputs outputs; };
+      };
     };
   };
 }
