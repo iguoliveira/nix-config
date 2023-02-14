@@ -38,6 +38,8 @@ in {
             qbittorrent
             openssl
             bitwarden
+            vlc
+            obsidian
         ];
     };
 
