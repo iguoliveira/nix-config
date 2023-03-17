@@ -14,6 +14,10 @@
     warn-dirty = false;
   };
 
+  nix.gc = {
+    dates = "weekly";
+  };
+
   environment.shellAliases = {
     bld = "sudo nixos-rebuild switch --flake";
   };
