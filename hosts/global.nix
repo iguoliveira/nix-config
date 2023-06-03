@@ -1,21 +1,15 @@
 { config, pkgs, inputs, outputs, ... }:
 
 {
-  imports =
-  [
-    inputs.abehidek.nixosModules.services
-  ];
-
-  modules.system.services.docker.enable = true;
-
-  nix.settings = {  
-    experimental-features = [ "nix-command" "flakes" ];
-    auto-optimise-store = true;
-    warn-dirty = false;
-  };
-
-  nix.gc = {
-    dates = "weekly";
+  nix = {
+    settings = {
+      experimental-features = [ "nix-command" "flakes" ];
+      auto-optimise-store = true;
+      warn-dirty = false;
+    };
+    gc = {
+      dates = "weekly";
+    };
   };
 
   environment.shellAliases = {
@@ -24,7 +18,7 @@
 
   time.timeZone = "America/Sao_Paulo";
 
-  i18n = {
+    i18n = {
     defaultLocale = "en_US.UTF-8";
     extraLocaleSettings = {
       LC_ADDRESS = "pt_BR.UTF-8";
@@ -40,26 +34,29 @@
   };
 
   services = {
-    xserver = { # X11
+    xserver = {
       enable = true;
       displayManager.sddm.enable = true;
       desktopManager.plasma5.enable = true;
     };
-
     pipewire = {
       enable = true;
-      alsa.enable = true;
-      alsa.support32Bit = true;
       pulse.enable = true;
+      alsa = {
+        enable = true;
+        support32Bit = true;
+      };
     };
-
-    openssh.enable = true; # Enable the OpenSSH daemon
+    openssh.enable = true;
   };
 
-  # Enable sound with pipewire.
   sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
 
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config = {
+    allowUnfree = true;
+    allowNonFree = true;
+  };
 }
+
