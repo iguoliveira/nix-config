@@ -64,6 +64,23 @@
   services.xserver = {
       layout = "us";
       xkbVariant = "altgr-intl";
+      videoDrivers = ["nvidia"];
+  };
+
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
+  };
+
+  hardware.nvidia = {
+    modesetting.enable = true;
+
+    open = false;
+
+    nvidiaSettings = true;
+
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
   console.keyMap = "br-abnt2";
