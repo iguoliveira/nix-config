@@ -28,13 +28,11 @@ in {
         username = "iguoliveira";
         homeDirectory = "/home/iguoliveira";
         packages = with pkgs; [
-            postman
             vivaldi
             git
             vscode
             neofetch
             discord
-            obinskit
             qbittorrent
             openssl
             bitwarden
