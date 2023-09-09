@@ -9,7 +9,7 @@
 
   users.users.makima = {
     isNormalUser = true;
-    description = "Makima";
+    description = "makima";
     extraGroups = [ "networkmanager" "wheel" ];
   };
 
